@@ -88,6 +88,7 @@ public class String1
      * extraEnd("Hi") → "HiHiHi"
      */
     public String extraEnd(String str) {
+        //This only works for strings of length 5.
         return str.substring(3,5)+str.substring(3,5)+str.substring(3,5);
     }
 
@@ -153,6 +154,7 @@ public class String1
      * middleThree("solving") → "lvi"
      */
     public String middleThree(String str) {
+        //This should also use the length in the front of the substring
         if(str.length()>3){
             return str.substring(1,str.length()-1);
         }else{
