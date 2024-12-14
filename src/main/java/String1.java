@@ -12,7 +12,6 @@ public class String1
         System.out.println(s.makeOutWord("<<>>", "Yay"));
         System.out.println(s.extraEnd("Hello"));
         System.out.println(s.firstTwo("Hello"));
-        System.out.println(s.firstHalf("WooHoo"));
         System.out.println(s.withoutEnd("Hello"));
         System.out.println(s.comboString("hi", "Hello"));
         System.out.println(s.middleThree("Candy"));
@@ -88,7 +87,8 @@ public class String1
      * extraEnd("Hi") → "HiHiHi"
      */
     public String extraEnd(String str) {
-        return str.substring(3,5)+str.substring(3,5)+str.substring(3,5);
+       String lastTwo = str.substring(str.length() - 2); 
+       return lastTwo + lastTwo + lastTwo;
     }
 
     /*
@@ -153,11 +153,8 @@ public class String1
      * middleThree("solving") → "lvi"
      */
     public String middleThree(String str) {
-        if(str.length()>3){
-            return str.substring(1,str.length()-1);
-        }else{
-            return str;
-        }
+        int middle = str.length() / 2; 
+        return str.substring(middle - 1, middle + 2); 
     }
 
     /*
@@ -215,11 +212,10 @@ public class String1
      * conCat("abc", "") → "abc"
      */
     public String conCat(String a, String b) {
-        if ((a.substring(2).equals(b.substring(0,1)))){
-            return a.substring(0,a.length()-1)+b;
-        }
-        else{
-            return a+b;
+        if (a.length() > 0 && b.length() > 0 && a.charAt(a.length() - 1) == b.charAt(0)) {
+        return a + b.substring(1);
+        } else {
+        return a + b; 
         }
     }
 
@@ -234,11 +230,12 @@ public class String1
      *minCat("java", "Hello") → "javaello"
      */
     public String minCat(String a, String b) {
-        if(a.length()>b.length()){
-            return a.substring(a.length()-b.length(),a.length())+b;
-        }else{
-            return b.substring(b.length()-a.length(),b.length())+a;
-        }
+        int aLength = a.length();
+        int bLength = b.length();
+        int minLength = Math.min(aLength, bLength);
+        String aEnd = a.substring(aLength - minLength);
+        String bEnd = b.substring(bLength - minLength);
+        return aEnd + bEnd;
     }
 
     /*
@@ -268,18 +265,18 @@ public class String1
      * deFront("java") → "va"
      * deFront("away") → "aay"
      */
-    public String deFront(String str) {    
-        if (str.startsWith("a") && str.substring(1).equals("b")){
-            str=str.substring(2,str.length());
+    public String deFront(String str) {  
+         if (str.startsWith("a") && str. substring(1) .equals("b")){
+            str=str. substring(2, str.length());
         }
         if(str.startsWith("a")){
-            str=str.substring(1,str.length());
+            str=str. substring(1, str.length());
         }
-        if(str.substring(1).equals("b")){
-            str=str.substring(0)+str.substring(2,str.length());
+        if(str. substring(1).equals("b" )){
+            str=str. substring(0)+str.substring(2, str.length());
         }
         else{
-            str=str.substring(2,str.length());
+            str=str. substring(2, str.length());
         }
         return str;
     }
